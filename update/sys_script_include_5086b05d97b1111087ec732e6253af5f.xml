@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_58872_needit.NeeditGetEmailOfCurrentUser</api_name>
+        <caller_access/>
+        <client_callable>true</client_callable>
+        <description>Gets the email pof the current user for the client script "NeedIt Set Requested for and Email"</description>
+        <name>NeeditGetEmailOfCurrentUser</name>
+        <script><![CDATA[var NeeditGetEmailOfCurrentUser = Class.create();
+NeeditGetEmailOfCurrentUser.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
+    // Define the getEmail function.  
+    // Create a GlideRecord for the User table.
+    // Use the sysparm_userID passed from the client side to retrieve a record from the User table.
+    // Return the email address for the requested record
+    getEmailGetUser: function() {
+        var loggedInUser = gs.getUserID();
+        var currentUser = new GlideRecord('sys_user');
+        currentUser.addQuery('sys_id', this.getParameter('sysparm_user'));
+        currentUser.query();
+        while (currentUser.next()) {
+            var currentEmail = currentUser.email;
+        }
+        return currentEmail;
+    },
+    type: 'NeeditGetEmailOfCurrentUser'
+});]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-09-06 16:56:58</sys_created_on>
+        <sys_id>5086b05d97b1111087ec732e6253af5f</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>NeeditGetEmailOfCurrentUser</sys_name>
+        <sys_package display_value="NeedIt" source="x_58872_needit">6ead8e780f603200cd674f8ce1050ed1</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="NeedIt">6ead8e780f603200cd674f8ce1050ed1</sys_scope>
+        <sys_update_name>sys_script_include_5086b05d97b1111087ec732e6253af5f</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2022-09-06 17:16:44</sys_updated_on>
+    </sys_script_include>
+</record_update>
